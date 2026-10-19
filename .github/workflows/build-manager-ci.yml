@@ -52,14 +52,8 @@ jobs:
             cached-artifacts/ksud_magic
           key: ${{ steps.generate-cache-key.outputs.cache-key }}
 
-  build-lkm:
+   build-susfsd:
     needs: check-cache
-    if: needs.check-cache.outputs.cache-hit != 'true'
-    uses: ./.github/workflows/build-lkm.yml
-    secrets: inherit
-
-  build-susfsd:
-    needs: [check-cache, build-lkm]
     if: needs.check-cache.outputs.cache-hit != 'true'
     strategy:
       matrix:
