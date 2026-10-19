@@ -52,7 +52,7 @@ jobs:
             cached-artifacts/ksud_magic
           key: ${{ steps.generate-cache-key.outputs.cache-key }}
 
-   build-susfsd:
+  build-susfsd:
     needs: check-cache
     if: needs.check-cache.outputs.cache-hit != 'true'
     strategy:
